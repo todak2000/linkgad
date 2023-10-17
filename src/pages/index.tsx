@@ -1,17 +1,17 @@
-import * as React from 'react';
+import * as React from "react";
 
-import Layout from '@/components/layout/Layout';
-import Seo from '@/components/Seo';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Footer from './components/Footer';
+import Layout from "@/components/layout/Layout";
+import Seo from "@/components/Seo";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import Footer from "./components/Footer";
 
 export default function HomePage() {
   return (
     <Layout>
-      <Seo templateTitle='Home' />
+      <Seo templateTitle="Home" />
       <main>
-        <section className='bg-white min-h-screen'>
+        <section className="min-h-screen bg-white">
           <Header />
           <Hero />
           <Footer />

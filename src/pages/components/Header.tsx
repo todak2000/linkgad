@@ -3,13 +3,10 @@ import React, { useState, useEffect } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import Button from "@/components/buttons/Button";
 import { Logo, navBarItems } from "@/constant";
 
-
-
 const Header: React.FC = () => {
-  const { push, pathname } = useRouter();
+  const { push } = useRouter();
 
   const [showDropDown, setShowDropDown] = useState(false);
   const [width, setWidth] = useState(0);
@@ -25,14 +22,12 @@ const Header: React.FC = () => {
     };
   }, [width]);
 
-
   const handleClick = () => {
     setShowDropDown(!showDropDown);
   };
   const handleLink = (link: string) => {
     push(link);
   };
-
 
   return (
     <div className="bg-brand_primary  flex w-full flex-row items-center justify-between px-4 py-[40px]  md:px-[120px]">
@@ -61,7 +56,7 @@ const Header: React.FC = () => {
               onClick={() => {
                 handleLink(route);
               }}
-              className="text-brand_primary_color cursor-pointer text-center text-[16px] font-normal leading-[22px] hover:font-bold hover:text-white hover:bg-[#0000FF] hover:p-4 md:mr-4 md:text-[#3A3A3A]"
+              className="text-brand_primary_color cursor-pointer text-center text-[16px] font-normal leading-[22px] hover:bg-[#0000FF] hover:p-4 hover:font-bold hover:text-white md:mr-4 md:text-[#3A3A3A]"
             >
               {name}
             </p>

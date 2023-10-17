@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://tsnext-tw.thcl.dev
+Host: https://linkgad.vercel.app
 
 # Sitemaps
-Sitemap: https://tsnext-tw.thcl.dev/sitemap.xml
+Sitemap: https://linkgad.vercel.app/sitemap.xml
