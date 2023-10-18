@@ -43,7 +43,7 @@ const Hero: React.FC = () => {
       <div className="my-4 flex w-full flex-row items-center justify-center">
         <input
           type="text"
-          className="h-12 w-2/3 rounded-sm border border-[#E8E8E8]"
+          className="h-12 w-2/3 rounded-l-2xl border border-[#E8E8E8]"
           placeholder="https://"
           onChange={(e) => handleOnChange(e.target.value)}
         />
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
           disabled={urllink === ''}
           value="Scan Link"
           onClick={handleSubmit}
-          className="h-12 w-24 disabled:bg-slate-400 disabled:border-slate-400 cursor-pointer rounded-sm border border-[#0000ff] bg-[#0000ff] text-white"
+          className="h-12 w-24 disabled:bg-slate-400 disabled:border-slate-400 cursor-pointer rounded-r-2xl border border-[#0000ff] bg-[#0000ff] text-white"
         />
       </div>
       {loading && <ImSpinner2 className="animate-spin" />}

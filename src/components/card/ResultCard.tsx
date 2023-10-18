@@ -39,8 +39,8 @@ const ResultCard = ({url}: { url: string}) => {
           dataKey="value"
         />
       </PieChart>
-      <p className="absolute top-[45%] font-primary text-3xl font-bold">
-        {data[0]?.value}
+      <p className="absolute top-[40%] font-primary text-3xl font-bold">
+        {data[0]?.value}%
       </p>
       <p className="py-6 font-primary text-sm font-bold">{url}</p>
       <p className="py-6 font-primary text-lg font-bold">{resultText}</p>
