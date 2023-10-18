@@ -5,6 +5,7 @@ import ResultCard from "@/components/card/ResultCard";
 import { ImSpinner2 } from "react-icons/im";
 const Hero: React.FC = () => {
   const [showResult, setShowResult] = useState<boolean>(false);
+  const [urllink, setUrllink] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = () => {
@@ -15,12 +16,13 @@ const Hero: React.FC = () => {
     }, 3000);
   };
   const handleOnChange = (url: string) => {
+    setUrllink(url)
     console.log(url, "url link");
   };
   return (
     <div className="flex w-full flex-col items-center justify-center px-4 py-[40px]  md:px-[120px]">
       <div className="flex flex-row items-center justify-center">
-        <Image src={Logo} alt="hero logo" width={200} height={100} />
+        <Image src={Logo} alt="hero logo" width={200} height={100} className="hidden md:flex" />
         <svg width="337" height="106" viewBox="0 0 337 106" fill="none">
           <path
             d="M4.42867 21.4211H26.824V61.6031H46.159V78.9218H4.42867V21.4211ZM62.7575 13.4279C66.286 13.4279 68.9024 14.172 70.6067 15.6602C72.3109 17.1244 73.151 18.9967 73.127 21.2771C73.127 23.5574 72.0349 25.6577 69.8505 27.578C67.6902 29.4983 64.7978 30.4584 61.1732 30.4584C56.0845 30.4584 52.916 28.9222 51.6678 25.8497C51.3077 24.9856 51.1277 24.0255 51.1277 22.9693C51.1277 21.9131 51.3798 20.809 51.8838 19.6568C52.3879 18.5046 53.144 17.4725 54.1522 16.5603C56.3845 14.472 59.2529 13.4279 62.7575 13.4279ZM72.5149 78.9218H51.6678V34.167H72.5149V78.9218ZM105.532 46.3368C103.612 46.3368 102.651 47.8851 102.651 50.9815V78.9218H81.2643V34.167H93.074L98.2228 41.1521C100.143 38.4877 102.796 36.3753 106.18 34.8151C109.589 33.2549 112.769 32.4747 115.721 32.4747C121.146 32.4747 125.443 33.915 128.611 36.7954C131.804 39.6758 133.4 43.5404 133.4 48.3891V78.9218H111.869V57.3185C111.869 49.9974 109.757 46.3368 105.532 46.3368ZM161.52 64.4116C161.184 64.9636 160.98 65.3717 160.908 65.6357V78.9218H141.897V18.3246H160.548V47.525L169.046 34.167H190.253L176.463 53.7179L192.485 78.9218H170.522L161.52 64.4116Z"
@@ -42,18 +44,19 @@ const Hero: React.FC = () => {
         <input
           type="text"
           className="h-12 w-2/3 rounded-sm border border-[#E8E8E8]"
-          placeholder="Enter your website or link here..."
+          placeholder="https://"
           onChange={(e) => handleOnChange(e.target.value)}
         />
         <input
           type="button"
+          disabled={urllink === ''}
           value="Scan Link"
           onClick={handleSubmit}
-          className="h-12 w-24 cursor-pointer rounded-sm border border-[#0000ff] bg-[#0000ff] text-white"
+          className="h-12 w-24 disabled:bg-slate-400 disabled:border-slate-400 cursor-pointer rounded-sm border border-[#0000ff] bg-[#0000ff] text-white"
         />
       </div>
       {loading && <ImSpinner2 className="animate-spin" />}
-      {showResult && !loading && <ResultCard />}
+      {showResult && !loading && urllink !== '' && <ResultCard url={urllink}/>}
     </div>
   );
 };

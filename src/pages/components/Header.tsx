@@ -4,7 +4,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { Logo, navBarItems } from "@/constant";
-
+import {MdOutlineClose} from 'react-icons/md'
 const Header: React.FC = () => {
   const { push } = useRouter();
 
@@ -35,17 +35,24 @@ const Header: React.FC = () => {
         className="flex flex-shrink-0 cursor-pointer flex-row  items-center"
         onClick={() => handleLink("/")}
       >
-        <Image src={Logo} alt="google logo" width={100} height={70} />
+        <Image src={Logo} alt="google logo" width={100} height={70} className="hidden md:flex"/>
+        <Image src={Logo} alt="google logo" width={50} height={30} className="md:hidden flex"/>
       </div>
+      {showDropDown ? 
+      <MdOutlineClose 
+      className="flex text-2xl text-red-500 md:hidden"
+        onClick={handleClick}
+      />
+      :
       <RxHamburgerMenu
         className="flex text-lg text-green-900 md:hidden"
         onClick={handleClick}
       />
-
+      }
       <div
         className={` ${
           showDropDown
-            ? "absolute top-16 right-4 grid w-[120px] grid-cols-1 gap-4 bg-white py-4 drop-shadow-md "
+            ? "absolute top-24 right-4 grid w-1/2 grid-cols-1 gap-4 bg-[#f9f9f9] py-4 drop-shadow-sm "
             : "hidden flex-row items-center md:flex"
         }`}
       >

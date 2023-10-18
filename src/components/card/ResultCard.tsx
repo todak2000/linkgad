@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ResultText } from "@/constant";
 import { PieChart, Pie } from "recharts";
 
-const ResultCard = () => {
+const ResultCard = ({url}: { url: string}) => {
   const [data, setData] = useState<any[]>([]);
   const [resultText, setResultText] = useState<string>("");
 
@@ -27,8 +27,8 @@ const ResultCard = () => {
   }, []);
 
   return (
-    <div className="relative m-6 mb-3 flex h-[350px] flex-col items-center justify-center rounded-lg py-8 px-10 shadow-2xl md:w-[1/3]">
-      <p className="my-6 font-primary text-sm">{ResultText}</p>
+    <div className="relative m-6 mb-3 flex flex-col items-center justify-center rounded-lg py-8 px-10 shadow-2xl md:w-[1/3]">
+      <p className="my-6 font-primary text-sm text-center">{ResultText}</p>
       <PieChart width={250} height={250} className="relative">
         <Pie
           data={data}
@@ -42,6 +42,7 @@ const ResultCard = () => {
       <p className="absolute top-[45%] font-primary text-3xl font-bold">
         {data[0]?.value}
       </p>
+      <p className="py-6 font-primary text-sm font-bold">{url}</p>
       <p className="py-6 font-primary text-lg font-bold">{resultText}</p>
     </div>
   );
