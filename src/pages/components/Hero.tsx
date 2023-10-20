@@ -3,13 +3,22 @@ import { Logo, LandingPageHeader, LandingPageText } from "@/constant";
 import Image from "next/image";
 import ResultCard from "@/components/card/ResultCard";
 import { ImSpinner2 } from "react-icons/im";
+import { predictApi } from "../api";
 const Hero: React.FC = () => {
   const [showResult, setShowResult] = useState<boolean>(false);
   const [urllink, setUrllink] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
+  const [result, setResult] = useState<any>(null);
 
-  const handleSubmit = () => {
+  const onClose = () => {
+    setResult(null)
+    setShowResult(false);
+    setUrllink('')
+  }
+  const handleSubmit = async () => {
     setLoading(true);
+    const res = await predictApi(urllink)
+    setResult(res)
     setTimeout(() => {
       setLoading(false);
       setShowResult(true);
@@ -17,7 +26,6 @@ const Hero: React.FC = () => {
   };
   const handleOnChange = (url: string) => {
     setUrllink(url)
-    console.log(url, "url link");
   };
   return (
     <div className="flex w-full flex-col items-center justify-center px-4 py-[40px]  md:px-[120px]">
@@ -45,6 +53,7 @@ const Hero: React.FC = () => {
           type="text"
           className="h-12 w-2/3 rounded-l-2xl border border-[#E8E8E8]"
           placeholder="https://"
+          value={urllink}
           onChange={(e) => handleOnChange(e.target.value)}
         />
         <input
@@ -56,7 +65,7 @@ const Hero: React.FC = () => {
         />
       </div>
       {loading && <ImSpinner2 className="animate-spin" />}
-      {showResult && !loading && urllink !== '' && <ResultCard url={urllink}/>}
+      {showResult && !loading && urllink !== '' && result !== null && <ResultCard result={result} onClose={onClose}/>}
     </div>
   );
 };
