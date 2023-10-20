@@ -64,3 +64,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## Contributors
 
 - [Daniel Olagunju](https://github.com/todak2000)
+- [Uche Victory](https://github.com/VickoLee)
