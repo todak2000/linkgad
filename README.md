@@ -65,3 +65,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 - [Daniel Olagunju](https://github.com/todak2000)
 - [Uche Victory](https://github.com/VickoLee)
+- [Chisom Dom-Anyanwau]
