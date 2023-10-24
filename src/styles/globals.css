@@ -70,6 +70,12 @@
     @apply font-primary text-base font-bold md:text-lg;
   }
 
+  .alert-bg {
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../../public/images/alert_bg.png');
+  }
   body,
   .p {
     @apply font-primary text-sm md:text-base;

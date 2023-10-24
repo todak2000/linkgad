@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Logo, LandingPageHeader, LandingPageText } from "@/constant";
+import { Logo, LandingPageHeader, LandingPageText, cardItems } from "@/constant";
 import Image from "next/image";
 import ResultCard from "@/components/card/ResultCard";
 import { ImSpinner2 } from "react-icons/im";
 import { predictApi } from "../api";
+import ShortCard from "@/components/card/ShortCard";
 const Hero: React.FC = () => {
   const [showResult, setShowResult] = useState<boolean>(false);
   const [urllink, setUrllink] = useState<string>('');
@@ -66,6 +67,12 @@ const Hero: React.FC = () => {
       </div>
       {loading && <ImSpinner2 className="animate-spin" />}
       {showResult && !loading && urllink !== '' && result !== null && <ResultCard result={result} onClose={onClose}/>}
+      <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-3">
+      {cardItems.map(({id, header, text}: any)=>{
+        return <ShortCard key={id} header={header} text={text}/>
+      })}
+      </div>
+      
     </div>
   );
 };
